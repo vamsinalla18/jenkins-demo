@@ -12,13 +12,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'python3 -m pip install pytest'
+                sh 'python3 -m pip install --user pytest'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'pytest'
+                sh 'python3 -m pytest'
             }
         }
 
@@ -27,11 +27,9 @@ pipeline {
                 echo 'Building application...'
             }
         }
-
     }
 
     post {
-
         success {
             echo 'Pipeline completed successfully!'
         }
